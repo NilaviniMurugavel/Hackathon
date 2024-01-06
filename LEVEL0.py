@@ -44,7 +44,7 @@ def travellingsalesman(c):
     min_val = 10000
     visited[c] = 1
     print((c + 1), end=" ")
-    res.append(c)
+    res.append(c-1)
     for k in range(n):
         if (tsp_g[c][k] != 0) and (visited[k] == 0):
             if tsp_g[c][k] < min_val:
@@ -66,9 +66,15 @@ tsp_g = np.array(distance_matrix)
 print("Shortest Path:", end=" ")
 travellingsalesman(0)
 print()
-res.append(0)
+
 print(res)
- 
-result={'v0': {'path':res}}
+res1=[]
+res1.append('r0')
+for i in range (1,len(res)):
+    s='n'+str(res[i])
+    res1.append(s)
+res1.append('r0')
+print(res1)
+result={'v0': {'path':res1}}
 with open("OutputLevel0.json", "w") as outfile:
     json.dump(result, outfile)
